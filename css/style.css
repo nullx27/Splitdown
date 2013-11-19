@@ -1,0 +1,60 @@
+.splitdown-editor {
+    width:100%;
+    min-height: 500px;
+    background-color: #FAFAFA;
+    margin-top:3px !important
+}
+
+.splitdown-preview {
+    height: 500px;
+    width:100%;
+    margin-top:3px !important;
+    overflow-y: scroll;
+}
+
+.splitdown-wrapper {
+    border-top:#edece4 1px solid;
+    margin-top: 30px;
+}
+
+.splitdown-mirror-left {
+    border-right:#edece4 1px solid;
+    min-height: 500px;
+    width:620px;
+    float:left;
+    margin-top: 5px;
+}
+
+.splitdown-mirror-right {
+    min-height: 500px;
+    float:right;
+    width:570px;
+    margin-top: 5px;
+}
+
+.splitdown-label {
+    color: #999999;
+    margin-left: 5px;
+}
+
+.splitdown-help {
+    background-color: #C5C5C5;
+    border-radius: 50px;
+    float: right;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.splitdown-helpbox {
+    background-color: black;
+    border-radius: 20px;
+    display:none;
+    height:500px;
+    width:400px;
+}
