@@ -14,6 +14,7 @@ class Splitdown {
 
 	protected static $instance = NULL;
 
+
 	static function get_instance(){
 		if( is_null( static::$instance ) )
 			static::$instance = new self;
@@ -34,9 +35,13 @@ class Splitdown {
 
 
 	public function enqueue_scripts(){
+		$extensions = get_option( 'splitdown_extensions', array() );
+
 		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ) );
 
-		wp_enqueue_script( 'showdown-github', plugins_url( '/js/showdown/compressed/extensions/github.js', __FILE__ ) );
+		foreach( $extensions as $extension ){
+			wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
+		}
 
 		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery-ui-dialog' ) );
 	}
@@ -106,7 +111,16 @@ class Splitdown {
 			'splitdown_settings'
 		);
 
+		add_settings_field(
+			'splitdown_setting_showdown_extension',
+			'Showdown extensions',
+			array( __CLASS__, 'options_field_showdown_extensions' ),
+			'writing',
+			'splitdown_settings'
+		);
+
 		register_setting( 'writing', 'splitdown_posttypes' );
+		register_setting( 'writing', 'splitdown_extensions' );
 	}
 
 
@@ -117,7 +131,7 @@ class Splitdown {
 	public static function options_field_post_types(){
 
 		$types = "";
-		$current = get_option( 'splitdown_posttypes' );
+		$current = get_option( 'splitdown_posttypes', array() );
 
 		foreach( get_post_types() as $post_type ){
 			$vals = array(
@@ -126,13 +140,53 @@ class Splitdown {
 				'selected' => ( in_array( $post_type, $current ) ) ? 'selected' : ''
 			);
 
-			$types .= static::_load_template( 'option-posttype-option.html', $vals );
+			$types .= static::_load_template( 'option-select-option.html', $vals );
 			$types .= "\n";
 		}
 
  		echo static::_load_template( 'option-posttype.html', array( 'options' => $types ) );
-
 	}
+
+	private static function _get_showdown_extensions(){
+
+		$path = __DIR__ .
+			DIRECTORY_SEPARATOR . 'js' .
+			DIRECTORY_SEPARATOR . 'showdown' .
+			DIRECTORY_SEPARATOR . 'compressed' .
+			DIRECTORY_SEPARATOR . 'extensions' .
+			DIRECTORY_SEPARATOR;
+
+		$data = scandir( $path );
+
+		// Remove . and ..
+		unset( $data[0] );
+		unset( $data[1] );
+
+		// fix array indices
+		$data = array_merge( array(), $data );
+
+		return apply_filters( 'splitdown_filter_showdown_extions', $data );
+	}
+
+	public static function options_field_showdown_extensions(){
+		$current = get_option( 'splitdown_extensions', array() );
+		$extensions = static::_get_showdown_extensions();
+		$out = "";
+
+		foreach( $extensions as $extension ){
+			$vals = array(
+				'value' => $extension,
+				'name' => $extension,
+				'selected' => ( in_array( $extension, $current ) ) ? 'selected' : ''
+			);
+
+			$out .= static::_load_template( 'option-select-option.html', $vals );
+			$out .= "\n";
+		}
+
+		echo static::_load_template( 'option-showdown-extension.html', array( 'options' => $out ) );
+	}
+
 
 	private static function _load_template( $template, array $values = array() ) {
 
