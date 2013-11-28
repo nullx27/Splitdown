@@ -86,6 +86,7 @@ class Splitdown {
 
 		update_post_meta( $post_id, '_splitdown_markdown', $markdown );
 
+		//remove actions to avoid endless loop
 		remove_action( 'save_post',				array( __CLASS__, 'save' ) );
 		remove_action( 'edit_post',				array( __CLASS__, 'save' ) );
 
@@ -129,7 +130,6 @@ class Splitdown {
 	}
 
 	public static function options_field_post_types(){
-
 		$types = "";
 		$current = get_option( 'splitdown_posttypes', array() );
 
@@ -148,7 +148,6 @@ class Splitdown {
 	}
 
 	private static function _get_showdown_extensions(){
-
 		$path = __DIR__ .
 			DIRECTORY_SEPARATOR . 'js' .
 			DIRECTORY_SEPARATOR . 'showdown' .
