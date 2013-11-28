@@ -12,8 +12,6 @@ Splitdown = {
         Splitdown.converter = new Showdown.converter();
 
         this.source.on( 'keyup', this.update );
-
-        jQuery( '.splitdown-help').on( 'click', this.help );
     },
 
     update: function () {
@@ -24,16 +22,6 @@ Splitdown = {
         );
 
         jQuery( '#splitdown-markdown').val( Splitdown.desination.html() );
-    },
-
-    help: function(){
-        jQuery( '.splitdown-helpbox' ).dialog(
-            {   modal: true,
-                closeOnEscape: true
-            }
-        );
-
-
     }
 };
 

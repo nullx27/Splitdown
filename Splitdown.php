@@ -43,7 +43,7 @@ class Splitdown {
 			wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
 		}
 
-		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery-ui-dialog' ) );
+		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
 	}
 
 

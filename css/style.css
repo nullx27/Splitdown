@@ -49,12 +49,10 @@
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.splitdown-helpbox {
-    background-color: black;
-    border-radius: 20px;
-    display:none;
-    height:500px;
-    width:400px;
+.splitdown-help:visited, .splitdown-help:visited{
+    color: #ffffff;
+    text-decoration: none;
 }
