@@ -6,12 +6,12 @@ Splitdown = {
     converter: '',
 
     init: function () {
-        Splitdown.source = jQuery('#content');
-        Splitdown.desination = jQuery('#splitdown-preview');
+        Splitdown.source = jQuery( '#content' );
+        Splitdown.desination = jQuery( '#splitdown-preview' );
 
         Splitdown.converter = new Showdown.converter();
 
-        this.source.on('keyup', this.update);
+        this.source.on( 'keyup', this.update );
 
         jQuery( '.splitdown-help').on( 'click', this.help );
     },
@@ -29,7 +29,7 @@ Splitdown = {
     help: function(){
         jQuery( '.splitdown-helpbox' ).dialog(
             {   modal: true,
-                closeOnEscape: true,
+                closeOnEscape: true
             }
         );
 
