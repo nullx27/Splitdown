@@ -15,12 +15,13 @@
 .splitdown-wrapper {
     border-top:#edece4 1px solid;
     margin-top: 30px;
+    width:100%;
 }
 
 .splitdown-mirror-left {
     border-right:#edece4 1px solid;
     min-height: 500px;
-    width:620px;
+    width:50%;
     float:left;
     margin-top: 5px;
 }
@@ -28,7 +29,7 @@
 .splitdown-mirror-right {
     min-height: 500px;
     float:right;
-    width:570px;
+    width:49%;
     margin-top: 5px;
 }
 
