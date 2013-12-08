@@ -44,6 +44,12 @@ class Splitdown {
 		}
 
 		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
+
+        // Need for distraction free mode
+        wp_enqueue_script('screenfull', '//cdnjs.cloudflare.com/ajax/libs/screenfull.js/1.0.4/screenfull.min.js', array(), '3', true);
+
+
+
 	}
 
 
