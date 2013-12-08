@@ -155,7 +155,8 @@ class Splitdown {
 			DIRECTORY_SEPARATOR . 'extensions' .
 			DIRECTORY_SEPARATOR;
 
-		$data = scandir( $path );
+		if( ( $data = scandir( $path ) ) === FALSE )
+            return apply_filters( 'splitdown_filter_showdown_extions', array() );
 
 		// Remove . and ..
 		unset( $data[0] );
@@ -169,8 +170,9 @@ class Splitdown {
 
 	public static function options_field_showdown_extensions(){
 		$current = get_option( 'splitdown_extensions', array() );
-		$extensions = static::_get_showdown_extensions();
-		$out = "";
+        $extensions = static::_get_showdown_extensions();
+
+        $out = "";
 
 		foreach( $extensions as $extension ){
 			$vals = array(
