@@ -68,7 +68,7 @@ class Splitdown {
 
 		$post = get_post( get_the_id() );
 
-		if( !in_array( $post->post_type, get_option( 'splitdown_posttypes' ) ) )
+		if( !in_array( $post->post_type, get_option( 'splitdown_posttypes', array() ) ) )
 			return;
 
 		$meta = get_post_meta( $post->ID, '_splitdown_markdown', TRUE );
