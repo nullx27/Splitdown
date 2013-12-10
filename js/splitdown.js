@@ -17,7 +17,8 @@ Splitdown = {
 
         jQuery(document).on(screenfull.raw.fullscreenchange, this.dmodeChange );
 
-        if( this.source.text().length == 0 ){
+        //only convert html to markdown when there is a preview but no markdown
+        if( this.source.text().length == 0 && this.desination.html() != 0 ){
              this.source.val( html2markdown( this.desination.html() ) );
         }
     },
