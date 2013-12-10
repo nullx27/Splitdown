@@ -1,3 +1,6 @@
 [submodule "js/showdown"]
 	path = js/showdown
 	url = https://github.com/coreyti/showdown.git
+[submodule "js/html2markdown"]
+	path = js/html2markdown
+	url = https://github.com/kates/html2markdown

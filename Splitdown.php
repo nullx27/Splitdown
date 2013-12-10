@@ -38,6 +38,8 @@ class Splitdown {
 		$extensions = get_option( 'splitdown_extensions', array() );
 
 		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ) );
+		wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
+		wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
 
 		foreach( $extensions as $extension ){
 			wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );

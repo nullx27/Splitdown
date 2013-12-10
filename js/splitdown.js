@@ -17,8 +17,9 @@ Splitdown = {
 
         jQuery(document).on(screenfull.raw.fullscreenchange, this.dmodeChange );
 
-
-
+        if( this.source.text().length == 0 ){
+             this.source.val( html2markdown( this.desination.html() ) );
+        }
     },
 
     update: function () {
@@ -30,6 +31,8 @@ Splitdown = {
 
         jQuery( '#splitdown-markdown').val( Splitdown.desination.html() );
     },
+
+
 
     dmode: function() {
 
