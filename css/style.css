@@ -71,3 +71,8 @@ body { min-height: 100%; }
     border-right:#000000 2px solid !important;
 
 }
+
+.splitdown-media-button {
+    float: right;
+    margin-right: 8px !important;
+}

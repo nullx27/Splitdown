@@ -37,7 +37,7 @@ class Splitdown {
 	public function enqueue_scripts(){
 		$extensions = get_option( 'splitdown_extensions', array() );
 
-		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ) );
+		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ), array(), '0.1', true );
 		wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
 		wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
 
