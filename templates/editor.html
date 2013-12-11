@@ -1,14 +1,18 @@
 <div class="splitdown-wrapper" id="splitdown-wrapper">
-    <div class="splitdown-mirror-left">
-        <span class="splitdown-label">Markdown</span>
-        <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" title="Markdown help" class="splitdown-button">?</a>
-        <a href="#" id="splitdown-dmode" title="Distraction free mode" class="splitdown-button">D</a>
-        <a href="#" id="insert-media-button" class="button insert-media add_media splitdown-media-button" data-editor="content" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a>
-        <textarea class="wp-editor-area splitdown-editor" name="content" id="content" aria-hidden="true">{:markdown}</textarea>
-    </div>
-    <div class="splitdown-mirror-right">
-        <span class="splitdown-label">Preview</span>
-        <div class="splitdown-preview" id="splitdown-preview">{:html}</div>
-        <input type="hidden" name="splitdown-markdown" id="splitdown-markdown" />
-    </div>
+	<div class="splitdown-mirror-left">
+		<div class="splitdown-mirror-toolbar">
+			<span class="splitdown-label">Markdown</span>
+			<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" title="Markdown help" class="splitdown-button">?</a>
+			<a href="#" id="splitdown-dmode" title="Distraction free mode" class="splitdown-button">D</a>
+			<a href="#" id="insert-media-button" class="button insert-media add_media splitdown-media-button" data-editor="content" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a>
+		</div>
+		<textarea class="wp-editor-area splitdown-editor" name="content" id="content" aria-hidden="true">{:markdown}</textarea>
+	</div>
+	<div class="splitdown-mirror-right">
+		<div class="splitdown-mirror-toolbar">
+			<span class="splitdown-label">Preview</span>
+		</div>
+		<div class="splitdown-preview" id="splitdown-preview">{:html}</div>
+		<input type="hidden" name="splitdown-markdown" id="splitdown-markdown" />
+	</div>
 </div>
