@@ -11,7 +11,7 @@
 I implemented an experimental version of the WordPress Media Manager. At the moment it does not work in distraction free mode.
 Since Markdown doesn't support css classes for elements, I need to write a showdown extension to fix this, so images can be displayed properly.
 As always this may take some time to implement, because I work alone in my spare time on this :) If you want to help, just
-fork this project and submit a pull request for your changes.
+fork this project and submit a pull request with your changes.
 
 **If you find a bug or have a suggestion leave a ticket at https://github.com/Necrotex/Splitdown/issues.**
 
