@@ -8,8 +8,12 @@
 4. Enjoy
 
 ### Note:
-This plugin is ***lacking some features*** like the Media Manager Integration and so on. I'm working on this, but it can take some time.
-Also if you find a bug or have a suggestion leave a ticket at https://github.com/Necrotex/Splitdown/issues.
+I implemented an experimental version of the WordPress Media Manager. At the moment it does not work in distraction free mode.
+Since Markdown doesn't support css classes for elements, I need to write a showdown extension to fix this, so images can be displayed properly.
+As always this may take some time to implement, because I work alone in my spare time on this :) If you want to help, just
+fork this project and submit a pull request for your changes.
+
+**If you find a bug or have a suggestion leave a ticket at https://github.com/Necrotex/Splitdown/issues.**
 
 ### Javascript libraries used:
 + [showdown](https://github.com/coreyti/showdown)
