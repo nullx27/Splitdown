@@ -89,8 +89,8 @@ class Splitdown {
 
 
 	public static function save( $post_id ){
-		$html = $_POST[ 'splitdown-markdown' ];
-		$markdown = $_POST[ 'content' ];
+		$html		= $_POST ? $_POST[ 'splitdown-markdown' ]	: '';
+		$markdown	= $_POST ? $_POST[ 'content' ]				: '';
 
 		update_post_meta( $post_id, '_splitdown_markdown', $markdown );
 
