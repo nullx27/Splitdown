@@ -21,4 +21,4 @@ If you need support, please contact a WordPress expert. Issues are not for suppo
 
 ### Javascript libraries used:
 + [showdown](https://github.com/coreyti/showdown)
-+ [html2mkardown](https://github.com/kates/html2markdown)
++ [html2markdown](https://github.com/kates/html2markdown)
