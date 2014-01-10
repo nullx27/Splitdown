@@ -100,8 +100,12 @@ class Splitdown {
 			$html = "";
 		}
 
-		$markdown	= $_POST ? $_POST[ 'content' ]				: '';
-
+		if ($_POST && isset($_POST["content"])) {
+			$markdown	= $_POST[ 'content' ];
+		} else {
+			$markdown = "";
+		}
+		
 		update_post_meta( $post_id, '_splitdown_markdown', $markdown );
 
 		//remove actions to avoid endless loop
