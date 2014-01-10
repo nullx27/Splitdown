@@ -26,7 +26,7 @@ class Splitdown {
 	public function __construct(){
 		add_action( 'init',						array( __CLASS__, 'remove_editor' ), 0, 10 );
 		add_action( 'edit_form_after_editor',	array( __CLASS__, 'load_editor' ), 0, 11 );
-		add_action( 'admin_menu',				array( __CLASS__, 'enqueue_scripts' ) );
+		add_action( 'admin_menu',				array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_menu',				array( __CLASS__, 'load_style' ) );
 		add_action( 'save_post',				array( __CLASS__, 'save' ) );
 		add_action( 'edit_post',				array( __CLASS__, 'save' ) );
