@@ -1,8 +1,153 @@
+<style>
+
+#TB_ajaxContent {
+	background: #fff;
+}
+table {
+	font-size: 16px;
+	width: 100%;
+}
+table th {
+	color: #AAA9A2;
+}
+table th, table td {
+	padding: 8px;
+	line-height: 20px;
+	text-align: left;
+	vertical-align: middle;
+}
+table tbody>tr:nth-child(odd)>td, table tbody>tr:nth-child(odd)>th {
+background-color: #F7F7F3;
+}
+
+</style>
 <div class="splitdown-wrapper" id="splitdown-wrapper">
 	<div class="splitdown-mirror-left">
 		<div class="splitdown-mirror-toolbar">
 			<span class="splitdown-label">Markdown</span>
-			<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" title="Markdown help" class="splitdown-button">?</a>
+
+			<div id="my-content-id" style="display:none;">
+			     <p>
+			          <section class="modal-body"><div><section class="markdown-help-container">
+			          	<h1>Markdown Help</h1>
+				    <table class="modal-markdown-help-table">
+				        <thead>
+				            <tr>
+				                <th>Result</th>
+				                <th>Markdown</th>
+				                <th>Shortcut</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr>
+				                <td><strong>Bold</strong></td>
+				                <td>**text**</td>
+				                <td>Ctrl / Cmd + B</td>
+				            </tr>
+				            <tr>
+				                <td><em>Emphasize</em></td>
+				                <td>*text*</td>
+				                <td>Ctrl / Cmd + I</td>
+				            </tr>
+				            <tr>
+				                <td><code>Inline Code</code></td>
+				                <td>`code`</td>
+				                <td>Cmd + K / Ctrl + Shift + K</td>
+				            </tr>
+				            <tr>
+				                <td>Strike-through</td>
+				                <td>~~text~~</td>
+				                <td>Ctrl + Alt + U</td>
+				            </tr>
+				            <tr>
+				                <td><a href="#">Link</a></td>
+				                <td>[title](http://)</td>
+				                <td>Ctrl + Shift + L</td>
+				            </tr>
+				            <tr>
+				                <td>Image</td>
+				                <td>![alt](http://)</td>
+				                <td>Ctrl + Shift + I</td>
+				            </tr>
+				            <tr>
+				                <td>List</td>
+				                <td>* item</td>
+				                <td>Ctrl + L</td>
+				            </tr>
+				            <tr>
+				                <td>Blockquote</td>
+				                <td>&gt; quote</td>
+				                <td>Ctrl + Q</td>
+				            </tr>
+				            <tr>
+				                <td>H1</td>
+				                <td># Heading</td>
+				                <td>Ctrl + Alt + 1</td>
+				            </tr>
+				            <tr>
+				                <td>H2</td>
+				                <td>## Heading</td>
+				                <td>Ctrl + Alt + 2</td>
+				            </tr>
+				            <tr>
+				                <td>H3</td>
+				                <td>### Heading</td>
+				                <td>Ctrl + Alt + 3</td>
+				            </tr>
+				            <tr>
+				                <td>H4</td>
+				                <td>#### Heading</td>
+				                <td>Ctrl + Alt + 4</td>
+				            </tr>
+				            <tr>
+				                <td>H5</td>
+				                <td>##### Heading</td>
+				                <td>Ctrl + Alt + 5</td>
+				            </tr>
+				            <tr>
+				                <td>H6</td>
+				                <td>###### Heading</td>
+				                <td>Ctrl + Alt + 6</td>
+				            </tr>
+				            <tr>
+				                <td>Select Word</td>
+				                <td></td>
+				                <td>Ctrl + Alt + W</td>
+				            </tr>
+				            <tr>
+				                <td>New Paragraph</td>
+				                <td></td>
+				                <td>Ctrl / Cmd + Enter</td>
+				            </tr>
+				            <tr>
+				                <td>Uppercase</td>
+				                <td></td>
+				                <td>Ctrl + U</td>
+				            </tr>
+				            <tr>
+				                <td>Lowercase</td>
+				                <td></td>
+				                <td>Ctrl + Shift + U</td>
+				            </tr>
+				            <tr>
+				                <td>Titlecase</td>
+				                <td></td>
+				                <td>Ctrl + Alt + Shift + U</td>
+				            </tr>
+				            <tr>
+				                <td>Insert Current Date</td>
+				                <td></td>
+				                <td>Ctrl + Shift + 1</td>
+				            </tr>
+				        </tbody>
+				    </table>
+				    For further Markdown syntax reference: <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown Documentation</a>
+				</section>
+				</div></section>
+			     </p>
+			</div>
+
+			<a href="#TB_inline?width=600&height=550&inlineId=my-content-id" class="thickbox splitdown-button">?</a>
 			<a href="#" id="splitdown-dmode" title="Distraction free mode" class="splitdown-button">D</a>
 			<a href="#" id="insert-media-button" class="button insert-media add_media splitdown-media-button" data-editor="content" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a>
 		</div>
@@ -16,3 +161,4 @@
 		<input type="hidden" name="splitdown-markdown" id="splitdown-markdown" />
 	</div>
 </div>
+
