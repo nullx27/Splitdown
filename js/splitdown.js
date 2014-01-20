@@ -23,6 +23,11 @@ Splitdown = {
         }
 
         jQuery(document).ajaxSuccess( this.ajaxIntercept );
+
+        // Update at the start to generate the HTML (otherwise when we save after
+        // no changes, the_content() will be blank!)
+        this.update();
+        
     },
 
     ajaxIntercept: function( event, xhr, settings){
