@@ -35,26 +35,32 @@ class Splitdown {
 
 
 	public function enqueue_scripts(){
-		$extensions = get_option( 'splitdown_extensions', array() );
 
-		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ), array(), '0.1', true );
-		wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
-		wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
+		// Only enqueue scripts on editor pages
+		global $post;
+		if ($post) {
 
-        if( is_array( $extensions ) ){
+			$extensions = get_option( 'splitdown_extensions', array() );
 
-		    foreach( $extensions as $extension ){
-		    	wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
-		    }
-        
-        }
+			wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ), array(), '0.1', true );
+			wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
+			wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
 
-		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
+      if( is_array( $extensions ) ){
 
-        // Need for distraction free mode
-        wp_enqueue_script('screenfull', '//cdnjs.cloudflare.com/ajax/libs/screenfull.js/1.0.4/screenfull.min.js', array(), '3', true);
+	    foreach( $extensions as $extension ){
+	    	wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
+	    }
+      
+      }
+
+			wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
+
+	    // Need for distraction free mode
+	    wp_enqueue_script('screenfull', '//cdnjs.cloudflare.com/ajax/libs/screenfull.js/1.0.4/screenfull.min.js', array(), '3', true);
 
 
+    } 
 
 	}
 
