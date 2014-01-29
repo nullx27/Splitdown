@@ -24,43 +24,38 @@ class Splitdown {
 
 
 	public function __construct(){
-		add_action( 'init',						array( __CLASS__, 'remove_editor' ), 0, 10 );
-		add_action( 'edit_form_after_editor',	array( __CLASS__, 'load_editor' ), 0, 11 );
+		add_action( 'init',						array( $this, 'remove_editor' ), 0, 10 );
+		add_action( 'edit_form_after_editor',	array( $this, 'load_editor' ), 0, 11 );
 		add_action( 'admin_menu',				array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_menu',				array( __CLASS__, 'load_style' ) );
-		add_action( 'save_post',				array( __CLASS__, 'save' ) );
-		add_action( 'edit_post',				array( __CLASS__, 'save' ) );
-		add_action( 'admin_init',				array( __CLASS__, 'add_options' ) );
+		add_action( 'admin_menu',				array( $this, 'load_style' ) );
+		add_action( 'save_post',				array( $this, 'save' ) );
+		add_action( 'edit_post',				array( $this, 'save' ) );
+		add_action( 'admin_init',				array( $this, 'add_options' ) );
 	}
 
 
 	public function enqueue_scripts(){
 
 		// Only enqueue scripts on editor pages
-		global $post;
-		if ($post) {
+		$extensions = get_option( 'splitdown_extensions', array() );
 
-			$extensions = get_option( 'splitdown_extensions', array() );
+		wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ), array(), '0.1', true );
+		wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
+		wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
 
-			wp_enqueue_script( 'showdown', plugins_url( '/js/showdown/compressed/showdown.js', __FILE__ ), array(), '0.1', true );
-			wp_enqueue_script( 'markdown-parser', plugins_url( '/js/html2markdown/markdown_dom_parser.js', __FILE__ ) );
-			wp_enqueue_script( 'markdown-renderer', plugins_url( '/js/html2markdown/html2markdown.js', __FILE__ ) );
+    if( is_array( $extensions ) ){
 
-      if( is_array( $extensions ) ){
+    foreach( $extensions as $extension ){
+    	wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
+    }
+    
+    }
 
-	    foreach( $extensions as $extension ){
-	    	wp_enqueue_script( "showdown-{$extension}", plugins_url( "/js/showdown/compressed/extensions/{$extension}", __FILE__ ) );
-	    }
-      
-      }
+		wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
 
-			wp_enqueue_script( 'splitdown', plugins_url( '/js/splitdown.js', __FILE__ ), array( 'jquery' ) );
+    // Need for distraction free mode
+    wp_enqueue_script('screenfull', '//cdnjs.cloudflare.com/ajax/libs/screenfull.js/1.0.4/screenfull.min.js', array(), '3', true);
 
-	    // Need for distraction free mode
-	    wp_enqueue_script('screenfull', '//cdnjs.cloudflare.com/ajax/libs/screenfull.js/1.0.4/screenfull.min.js', array(), '3', true);
-
-
-    } 
 
 	}
 
@@ -198,12 +193,12 @@ class Splitdown {
 
 	public static function options_field_showdown_extensions(){
 		$current = get_option( 'splitdown_extensions', array() );
-        $extensions = static::_get_showdown_extensions();
+    $extensions = static::_get_showdown_extensions();
 
-        if( empty( $current ) )
-            $current = array();
+    if( empty( $current ) )
+        $current = array();
 
-        $out = "";
+    $out = "";
 
 		foreach( $extensions as $extension ){
 			$vals = array(

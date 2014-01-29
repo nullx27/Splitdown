@@ -2,15 +2,20 @@ var Splitdown;
 
 Splitdown = {
     source: '',
-    desination: '',
+    destination: '',
     converter: '',
 
     init: function () {
         Splitdown.source = jQuery( '#content' );
-        Splitdown.desination = jQuery( '#splitdown-preview' );
+        Splitdown.destination = jQuery( '#splitdown-preview' );
+
+        // Check to see if the source and destination exist
+        if (!Splitdown.source.length || !Splitdown.destination.length) {
+            return;
+        }
 
         Splitdown.converter = new Showdown.converter();
-
+ 
         this.source.on( 'keyup', this.update );
 
         jQuery( '#splitdown-dmode').on( 'click', this.dmode );
@@ -18,8 +23,8 @@ Splitdown = {
         jQuery(document).on(screenfull.raw.fullscreenchange, this.dmodeChange );
 
         //only convert html to markdown when there is a preview but no markdown
-        if( this.source.text().length == 0 && this.desination.html() != 0 ){
-             this.source.val( html2markdown( this.desination.html() ) );
+        if( this.source.text().length == 0 && this.destination.html() != 0 ){
+             this.source.val( html2markdown( this.destination.html() ) );
         }
 
         jQuery(document).ajaxSuccess( this.ajaxIntercept );
@@ -27,7 +32,7 @@ Splitdown = {
         // Update at the start to generate the HTML (otherwise when we save after
         // no changes, the_content() will be blank!)
         this.update();
-        
+
     },
 
     ajaxIntercept: function( event, xhr, settings){
@@ -56,13 +61,13 @@ Splitdown = {
     },
 
     update: function () {
-        Splitdown.desination.html(
+        Splitdown.destination.html(
             Splitdown.converter.makeHtml(
                 Splitdown.source.val()
             )
         );
 
-        jQuery( '#splitdown-markdown').val( Splitdown.desination.html() );
+        jQuery( '#splitdown-markdown').val( Splitdown.destination.html() );
     },
 
     dmode: function() {
