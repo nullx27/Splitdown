@@ -3,7 +3,7 @@
  * Plugin Name:     Splitdown
  * Description:     Replaces the default editor
  * Author:          Andre 'Necrotex' Peiffer
- * Version:         0.1
+ * Version:         0.11
  * Licence:         GPLv3
  * Author URI:      http://necrotex.github.io
  * Text Domain:     splitdown
@@ -28,8 +28,8 @@ class Splitdown {
 		add_action( 'edit_form_after_editor',	array( $this, 'load_editor' ), 0, 11 );
 		add_action( 'admin_menu',				array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_menu',				array( $this, 'load_style' ) );
-		add_action( 'save_post',				array( $this, 'save' ) );
-		add_action( 'edit_post',				array( $this, 'save' ) );
+		add_action( 'save_post',				array( __CLASS__, 'save' ) );
+		add_action( 'edit_post',				array( __CLASS__, 'save' ) );
 		add_action( 'admin_init',				array( $this, 'add_options' ) );
 	}
 
@@ -109,10 +109,11 @@ class Splitdown {
 		
 		update_post_meta( $post_id, '_splitdown_markdown', $markdown );
 
-		//remove actions to avoid endless loop
+		// remove actions to avoid endless loop
 		remove_action( 'save_post',				array( __CLASS__, 'save' ) );
 		remove_action( 'edit_post',				array( __CLASS__, 'save' ) );
 
+		// Note - this can cause Wordpress to hang on certain pages
 		wp_update_post( array( 'ID' => $post_id, 'post_content' => $html ) );
 
 		add_action( 'save_post',				array( __CLASS__, 'save' ) );
